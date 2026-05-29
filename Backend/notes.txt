@@ -1,0 +1,8 @@
+
+only customer and restaurant can canel a order
+customer can cancel order before it is acceptedByAgent
+restaurant can cancel order before confirming it
+
+once a order confirmed..notification is send to avaliable agent within 5km
+readyforpickup is done by restaurant if no agent is accpted the order after confiming status
+readyforpickup choose a agent from restaurant agent and assign who have less assigned order 
