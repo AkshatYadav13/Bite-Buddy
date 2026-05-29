@@ -4,7 +4,6 @@ import type { DefaultEventsMap } from "@socket.io/component-emitter";
 import { useUserStore } from "@/store/useUserStore";
 import { useOrderStore } from "@/store/useOrderStore";
 import { useDeliveryAgentStore } from "@/store/useDeliveryAgentStore";
-import { PORT } from "./constants";
 
 type SocketType = Socket<DefaultEventsMap, DefaultEventsMap> | null;
 
