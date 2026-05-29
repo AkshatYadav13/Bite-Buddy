@@ -3,16 +3,17 @@ import Footer from "./components/shared/Footer";
 import { Outlet } from "react-router-dom";
 import { SocketProvider } from "./lib/SocketContext";
 import { useUserStore } from "./store/useUserStore";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useOptimizedLocationSync } from "./hooks/useOptimizedLocationSync";
 import { useAppStore } from "./store/useAppStore";
 import { Button } from "./components/ui/button";
-
+import { Loading } from "./components/shared/utilityComponents";
 
 const AppLayout = () => {
   const { user } = useUserStore();
 
-  const { getCurrentLocation,syncAgentLocationIfNeeded } = useOptimizedLocationSync();
+  const { getCurrentLocation, syncAgentLocationIfNeeded } =
+    useOptimizedLocationSync();
   const userLocation = useAppStore((s) => s.userLocation);
 
   useEffect(() => {
@@ -26,13 +27,17 @@ const AppLayout = () => {
   }, []);
 
   useEffect(() => {
-    if(user?.role === "Delivery_Agent"){
+    if (user?.role === "Delivery_Agent") {
       const id = setInterval(syncAgentLocationIfNeeded, 60_000); //1 miin
       return () => clearInterval(id);
     }
   }, []);
 
-  if (!userLocation && user?.role !== "Admin" && user?.role !== "Delivery_Agent") {
+  if (
+    !userLocation &&
+    user?.role !== "Admin" &&
+    user?.role !== "Delivery_Agent"
+  ) {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
         <h2 className="text-2xl font-semibold">📍 Enable Location Access</h2>
@@ -61,7 +66,9 @@ const AppLayout = () => {
       <div className="min-h-screen flex flex-col relative">
         <NavBar />
         <div className="flex-grow min-h-[90vh] bg-gray-50 dark:bg-input/110">
-          <Outlet />
+          <Suspense fallback={<Loading />}>
+            <Outlet />
+          </Suspense>
         </div>
         <Footer />
       </div>

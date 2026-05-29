@@ -1,7 +1,7 @@
+// import './corns'
 import express, { NextFunction, Request, Response } from "express";
 import dotenv from "dotenv"
 import connectDB from "./db/connectDB";
-import './corns'
 import cookieParser from "cookie-parser";
 import cors from 'cors'
 import userRoute from './routes/user.route'

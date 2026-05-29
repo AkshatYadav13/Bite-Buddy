@@ -214,8 +214,6 @@ export const getAllTransactions = async (req: Request, res: Response) => {
       res.status(403).json({ message: err.message });
       return;
     }
-    console.log(type,userId,resolvedTargetId)
-
     const filters = buildTransactionFilters({
       query: req.query,
       type,

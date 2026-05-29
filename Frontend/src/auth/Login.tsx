@@ -155,14 +155,14 @@ const Login = () => {
           </Button>
         </div>
 
-        <p className="text-center mt-4">
+        {/* <p className="text-center mt-4">
           <Link
             to="/auth/forgotPassword"
             className="text-blue-600 hover:underline"
           >
             Forgot Password?
           </Link>
-        </p>
+        </p> */}
 
         <Separator className="my-5" />
 
