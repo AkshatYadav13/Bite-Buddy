@@ -1,10 +1,5 @@
-import express from 'express'
-import http from 'http'
 import { Server } from 'socket.io'
-
-const app = express()
-
-const server = http.createServer(app)
+import { server } from '../app'
 
 const io = new Server(server,{
   cors:{
@@ -30,7 +25,7 @@ io.on("connection",async(socket)=>{
         }
     })
 })
-export {app,server,io};
+export {server,io};
 
 
 export function getUserSocketId(userId:string): string{

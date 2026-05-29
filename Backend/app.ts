@@ -4,7 +4,6 @@ import connectDB from "./db/connectDB";
 import './corns'
 import cookieParser from "cookie-parser";
 import cors from 'cors'
-import {app,server} from './socket_io/socket'
 import userRoute from './routes/user.route'
 import restaurantRoute from './routes/restaurant.route'
 import dishRoute from './routes/dish.route'
@@ -16,15 +15,18 @@ import transactionRoute from './routes/transaction.route'
 import multer from "multer";
 import dns from "node:dns/promises";
 import path from 'path'
+import http from "http";
 
 dns.setServers(["1.1.1.1"]);
 dotenv.config()
+connectDB()
 
 const PORT = process.env.PORT || 3000
 
 const DIRNAME = path.resolve();
 
-connectDB()
+export const app = express();
+export const server = http.createServer(app);
 
 const corsOptions = {
     origin:'https://bite-buddy-reeh.onrender.com',
@@ -67,7 +69,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   return
 });
 
-server.listen(PORT,()=>{
-    console.log(`Server running at http://localhost:${PORT}`)
-})
 
+server.listen(PORT, () => {
+  console.log(`Server running on ${PORT}`);
+});
