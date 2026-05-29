@@ -29,7 +29,7 @@ export const app = express();
 export const server = http.createServer(app);
 
 const corsOptions = {
-    origin:'https://bite-buddy-reeh.onrender.com',
+    origin:process.env.FRONTEND_URL,
     credentials:true
 }
 
@@ -73,3 +73,4 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 server.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);
 });
+
