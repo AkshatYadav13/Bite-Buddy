@@ -24,7 +24,7 @@ export const SocketProvider = ({ children }: SocketProviderProps) => {
 
     if (socketRef.current) return;
 
-    const socket = io(`http://localhost:${PORT}`, {
+    const socket = io(`https://bite-buddy-reeh.onrender.com/`, {
       query: { userId: user._id },
       withCredentials: true,
       transports: ["polling", "websocket"], // ✅ IMPORTANT
