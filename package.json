@@ -2,11 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-
   "scripts": {
     "dev": "nodemon Backend/app.ts",
-    "build":"npm i && npm i --prefix Frontend && npm run build --prefix Frontend",
-    "start": "nodemon Backend/app.ts"
+    "build": "npm i && npm i --prefix Frontend && npm run build --prefix Frontend && npx tsc",
+    "start": "node dist/Backend/app.js"
   },
   "type": "commonjs",
   "keywords": [],
