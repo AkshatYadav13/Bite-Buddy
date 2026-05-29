@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon Backend/app.ts",
-    "build": "npm i && npm i --prefix Frontend && npm run build --prefix Frontend && npx tsc",
-    "start": "node dist/Backend/app.js"
+    "build": "npm i && npm i --prefix Frontend && npm run build --prefix Frontend && npx tsc -p Backend/tsconfig.json",
+    "start": "node Backend/dist/app.js"
   },
   "type": "commonjs",
   "keywords": [],
